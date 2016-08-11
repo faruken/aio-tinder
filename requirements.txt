@@ -1,0 +1,7 @@
+aiohttp==0.22.5
+cchardet==1.0.0
+chardet==2.3.0
+coverage==4.2
+Logbook==1.0.0
+multidict==1.2.2
+ujson==1.35

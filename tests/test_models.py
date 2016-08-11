@@ -3,6 +3,7 @@
 from unittest import TestCase
 
 import os
+import binascii
 
 from src.models.model import User
 
@@ -11,7 +12,7 @@ class TestUser(TestCase):
     def setUp(self):
         self.male = 0
         self.female = 1
-        self._id = os.urandom(16)
+        self._id = binascii.hexlify(os.urandom(16))
         self.attributes = {
             "_id": self._id,
             "bio": "I'm a strong, independent woman who need no Tinder",

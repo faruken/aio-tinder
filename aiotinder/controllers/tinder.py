@@ -5,8 +5,8 @@
 
 from typing import (AnyStr, List)
 
-from src.models.model import User
-from src.controllers.api import Api
+from aiotinder.models.model import User
+from aiotinder.controllers.api import Api
 
 
 class Tinder:

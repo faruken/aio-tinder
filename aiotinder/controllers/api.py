@@ -10,9 +10,9 @@ from typing import (AnyStr, Dict, List, TypeVar, Any)
 import aiohttp
 import ujson as json
 
-from src.models.model import User
-from src.controllers import exceptions
-from src import settings
+from aiotinder.models.model import User
+from aiotinder.controllers import exceptions
+from aiotinder import settings
 
 warnings.resetwarnings()
 

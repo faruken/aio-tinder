@@ -107,12 +107,12 @@ class Api:
     async def common_connections(self, uid: AnyStr) -> Dict[AnyStr, G]:
         return await self.request("get", "user/{0}/common_connections".format(uid))
 
-    async def swipe_right(self, uid: AnyStr) -> Dict[AnyStr, int]:
+    async def swipe_right(self, user: User) -> Dict[AnyStr, int]:
         """Swipe right (to like the person with the given `uid`)
         :param uid: User Id.
         :return: JSON Response.
         """
-        return await self.request("get", "like/{0}".format(uid))
+        return await self.request("get", "like/{0}?content_hash={1}".format(user._id, user.content_hash))
 
     async def prospective(self, locale: AnyStr = "en-US") -> Dict[AnyStr, T]:
         """Get recommended users from Tinder.

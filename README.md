@@ -11,5 +11,3 @@ The following is todo list (I haven't tried these functionalities in Tinder.app 
 
 - Messages
 - Super Like
-- Like
-

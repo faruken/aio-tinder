@@ -5,7 +5,7 @@ from unittest import TestCase
 import os
 import binascii
 
-from src.models.model import User
+from aiotinder.models.model import User
 
 
 class TestUser(TestCase):

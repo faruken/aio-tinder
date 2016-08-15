@@ -1,3 +1,5 @@
+![](https://api.travis-ci.org/faruken/aio-tinder.svg)
+
 # Introduction
 
 This is a simple Tinder API written in Python 3.5.

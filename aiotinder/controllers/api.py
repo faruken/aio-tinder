@@ -10,9 +10,9 @@ from typing import (AnyStr, Dict, List, TypeVar, Any)
 import aiohttp
 import ujson as json
 
-from aiotinder.models.model import User
-from aiotinder.controllers import exceptions
 from aiotinder import settings
+from aiotinder.controllers import exceptions
+from aiotinder.models.model import User
 
 warnings.resetwarnings()
 
@@ -23,6 +23,7 @@ G = TypeVar("G", bool, int, AnyStr, List)
 class Api:
     """API
     """
+
     def __init__(self, facebook_id: AnyStr, facebook_token: AnyStr,
                  tinder_token: AnyStr = None) -> None:
         """
@@ -66,8 +67,8 @@ class Api:
         async with self.session.request(method, url, headers=self.headers,
                                         data=payload) as response:
             if response.status != HTTPStatus.OK:
-                raise exceptions.TinderConnectionException(
-                    "Response status was {0}".format(response.status))
+                message = "Response status was {0}".format(response.status)
+                raise exceptions.TinderConnectionException(message)
             return await response.json()
 
     async def authenticate(self) -> Dict[AnyStr, Dict[AnyStr, Any]]:
@@ -81,7 +82,8 @@ class Api:
         url = Api.construct_url("auth")
         async with self.session.post(url, data=payload) as response:
             if response.status != HTTPStatus.OK:
-                raise exceptions.TinderConnectionException("Cannot connect to Tinder. Response: {0}".format(response.status))
+                message = "Connection error: {0}".format(response.status)
+                raise exceptions.TinderConnectionException(message)
             data = await response.json()
             if "token" not in data:
                 raise exceptions.TinderAuthenticationException("Cannot get token")
@@ -103,17 +105,24 @@ class Api:
         """
         # if group:
         #     return await self.request("get", "group/pass/{0}".format(uid))
-        return await self.request("get", "pass/{0}?content_hash={1}".format(user._id, user.content_hash))
+        url_path = "pass/{0}?content_hash={1}".format(user._id, user.content_hash)
+        return await self.request("get", url_path)
 
     async def common_connections(self, uid: AnyStr) -> Dict[AnyStr, G]:
-        return await self.request("get", "user/{0}/common_connections".format(uid))
+        """Common connections with the user with the given `uid`.
+        :param uid: User Id.
+        :return: JSON Response.
+        """
+        url_path = "user/{0}/common_connections".format(uid)
+        return await self.request("get", url_path)
 
     async def swipe_right(self, user: User) -> Dict[AnyStr, int]:
         """Swipe right (to like the person with the given `uid`)
         :param user: User object.
         :return: JSON Response.
         """
-        return await self.request("get", "like/{0}?content_hash={1}".format(user._id, user.content_hash))
+        url_path = "like/{0}?content_hash={1}".format(user._id, user.content_hash)
+        return await self.request("get", url_path)
 
     async def prospective(self, locale: AnyStr = "en-US") -> Dict[AnyStr, T]:
         """Get recommended users from Tinder.

@@ -41,7 +41,8 @@ class Api:
         """
         self.session.close()
 
-    def construct_url(self, path: AnyStr) -> AnyStr:
+    @staticmethod
+    def construct_url(path: AnyStr) -> AnyStr:
         """Construct given path with the Tinder API URL.
         :param path: Relative URL
         :return: Constructed full URL.
@@ -61,7 +62,7 @@ class Api:
             payload = json.dumps(data)
         if not self.tinder_token:
             await self.authenticate()
-        url = self.construct_url(path)
+        url = Api.construct_url(path)
         async with self.session.request(method, url, headers=self.headers,
                                         data=payload) as response:
             if response.status != HTTPStatus.OK:
@@ -77,7 +78,7 @@ class Api:
         """
         payload = json.dumps({"facebook_id": self.id,
                               "facebook_token": self.token})
-        url = self.construct_url("auth")
+        url = Api.construct_url("auth")
         async with self.session.post(url, data=payload) as response:
             if response.status != HTTPStatus.OK:
                 raise exceptions.TinderConnectionException("Cannot connect to Tinder. Response: {0}".format(response.status))
@@ -96,7 +97,7 @@ class Api:
 
     async def swipe_left(self, user: User) -> Dict[AnyStr, int]:
         """Swipe left (to be not interested with the person with the given `uid`).
-        :param uid: User Id to pass to the API.
+        :param user: User object.
         :param group:
         :return: JSON response.
         """
@@ -109,7 +110,7 @@ class Api:
 
     async def swipe_right(self, user: User) -> Dict[AnyStr, int]:
         """Swipe right (to like the person with the given `uid`)
-        :param uid: User Id.
+        :param user: User object.
         :return: JSON Response.
         """
         return await self.request("get", "like/{0}?content_hash={1}".format(user._id, user.content_hash))

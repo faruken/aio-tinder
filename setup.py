@@ -29,6 +29,6 @@ setup(
         "ujson==1.35"
     ],
     extras_require={
-        "test": ["coverage==4.2", "Logbook==1.0.0", "nose==1.3.7"]
+        "test": ["coverage==4.2", "Logbook==1.0.0", "pytest==3.0.0", "pytest-cov==2.3.1"]
     }
 )

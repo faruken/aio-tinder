@@ -1,0 +1,21 @@
+[run]
+branch=True
+source=aiotinder
+cover_pylib=false
+omit =
+    */tests/*
+    /usr/*
+    setup.py
+
+[report]
+exclude_lines =
+    pragma: no cover
+    def __repr__
+    def __exit__
+    def __del__
+    def __str__
+    def __init__
+    if __name__ == .__main__.:
+
+[html]
+directory = htmlcov

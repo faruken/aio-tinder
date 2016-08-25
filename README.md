@@ -7,6 +7,10 @@ This is a simple Tinder API written in Python 3.5.
 Tinder API request/responses are captured with [mitmproxy](https://mitmproxy.org/).
 
 
+# Example
+There's an example code in `examples` folder to get the recommended users from Tinder with this library.
+
+
 ## TODO
 
 The following is todo list (I haven't tried these functionalities in Tinder.app yet but feel free to send pull requests.)

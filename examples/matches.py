@@ -6,11 +6,8 @@ import signal
 import sys
 
 import functools
-import warnings
 
 from aiotinder.controllers.tinder import Tinder
-
-warnings.simplefilter("always", ResourceWarning)
 
 facebook_id = ""
 facebook_token = ""

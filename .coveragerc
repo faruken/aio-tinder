@@ -4,6 +4,7 @@ source=aiotinder
 cover_pylib=false
 omit =
     */tests/*
+    */examples/*
     /usr/*
     setup.py
 

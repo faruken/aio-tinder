@@ -2,7 +2,6 @@
 
 """Tinder module.
 """
-
 from typing import (AnyStr, List)
 
 from aiotinder.models.model import User
@@ -35,4 +34,8 @@ class Tinder:
         :return: List of users.
         """
         response = await self.tinder.prospective(locale)
-        return [User(**result) for result in response["results"]]
+        res = []
+        for result in response["results"]:
+            if result.get("type") == "user":
+                res.append(User(**result.get("user")))
+        return res

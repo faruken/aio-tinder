@@ -117,6 +117,15 @@ class Api:
         url_path = "user/matches/{0}".format(match_id)
         return await self.request("post", url_path, data={"message": message})
 
+    async def meta(self, path: str = None) -> Dict[AnyStr, G]:
+        """Meta information. Possible optional `path` would be superlike info.
+        :param path: Additional meta path such as superlike info.
+        :return: JSON Response.
+        """
+        if path:
+            return await self.request("get", "meta/{0}".format(path))
+        return await self.request("get", "meta")
+
     async def common_connections(self, uid: AnyStr) -> Dict[AnyStr, G]:
         """Common connections with the user with the given `uid`.
         :param uid: User Id.

@@ -2,18 +2,21 @@
 
 # Introduction
 
-This is a simple Tinder API written in Python 3.5.
+This is a simple Tinder API for Python 3.5 and above.
 
 Tinder API request/responses are captured with [mitmproxy](https://mitmproxy.org/).
+
+### Note
+This library is Python 3.5 and above only. It relies on asyncio and type hinting which are features available only in Python 3.5 and above henceforth the library is not compatible with the previous Python versions.
 
 
 # Example
 There's an example code in `examples` folder to get the recommended users from Tinder with this library.
 
 
+
 ## TODO
 
-The following is todo list (I haven't tried these functionalities in Tinder.app yet but feel free to send pull requests.)
+The following is todo list (I haven't tried this functionality in Tinder.app yet but feel free to send pull requests.)
 
-- Messages
 - Super Like

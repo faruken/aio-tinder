@@ -51,7 +51,7 @@ class Api:
         return "{0}{1}".format(settings.API_URL, path)
 
     async def request(self, method: AnyStr, path: AnyStr,
-                      data: Dict[AnyStr, int] = None) -> Dict:
+                      data: Dict[AnyStr, Any] = None) -> Dict:
         """Make a request to the Tinder API.
         :param method: HTTP Method to make a request (GET, POST etc.)
         :param path: Relative URL to make the request.
@@ -107,6 +107,15 @@ class Api:
         #     return await self.request("get", "group/pass/{0}".format(uid))
         url_path = "pass/{0}?content_hash={1}".format(user._id, user.content_hash)
         return await self.request("get", url_path)
+
+    async def message(self, match_id: str, message: str) -> Dict[AnyStr, G]:
+        """Send message to the match.
+        :param match_id: Match Id.
+        :param message: Message.
+        :return: JSON Response.
+        """
+        url_path = "user/matches/{0}".format(match_id)
+        return await self.request("post", url_path, data={"message": message})
 
     async def common_connections(self, uid: AnyStr) -> Dict[AnyStr, G]:
         """Common connections with the user with the given `uid`.

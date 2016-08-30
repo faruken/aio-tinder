@@ -5,16 +5,19 @@ from setuptools import (setup, find_packages)
 
 setup(
     name="aio-tinder",
-    version="0.1",
+    version="0.1.1",
     description="Tinder API library with asyncio",
     url="https://github.com/faruken/aio-tinder",
     author="faruken",
     author_email="",
-    license="Whichever works for you",
+    platforms="any",
+    zip_safe=False,
+    license="MIT",
     classifiers=[
         "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
         "Topic :: Software Development :: Libraries :: Python Modules",
+        "License :: OSI Approved :: MIT License",
         "Programming Language :: Python :: 3 :: Only",
         "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: Implementation :: CPython"

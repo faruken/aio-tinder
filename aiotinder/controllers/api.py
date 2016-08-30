@@ -134,7 +134,7 @@ class Api:
         url_path = "user/{0}/common_connections".format(uid)
         return await self.request("get", url_path)
 
-    async def superlike(self, user: User) -> Dict[AnyStr, int]:
+    async def superlike(self, user: User) -> Dict[AnyStr, G]:
         """Superlike a user.
         :param user: User
         :return: JSON Response.

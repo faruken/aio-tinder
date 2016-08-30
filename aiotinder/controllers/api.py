@@ -134,6 +134,15 @@ class Api:
         url_path = "user/{0}/common_connections".format(uid)
         return await self.request("get", url_path)
 
+    async def superlike(self, user: User) -> Dict[AnyStr, int]:
+        """Superlike a user.
+        :param user: User
+        :return: JSON Response.
+        """
+        url_path = "like/{0}/super/".format(user._id)
+        return await self.request("post", url_path,
+                                  data={"content_hash": user.content_hash})
+
     async def swipe_right(self, user: User) -> Dict[AnyStr, int]:
         """Swipe right (to like the person with the given `uid`)
         :param user: User object.

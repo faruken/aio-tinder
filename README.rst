@@ -9,6 +9,9 @@ Tinder API request/responses are captured with [mitmproxy](https://mitmproxy.org
 ### Note
 This library is Python 3.5 and above only. It relies on asyncio and type hinting which are features available only in Python 3.5 and above henceforth the library is not compatible with the previous Python versions.
 
+# Installation
+
+    pip install aio-tinder
 
 # Example
 There's an example code in `examples` folder to get the recommended users from Tinder with this library.

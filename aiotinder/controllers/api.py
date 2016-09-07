@@ -156,4 +156,4 @@ class Api:
         :param locale: Locale setting.
         :return: JSON response.
         """
-        return await self.request("get", "user/recs?locale={0}".format(locale))
+        return await self.request("get", "recs/social?locale={0}".format(locale))

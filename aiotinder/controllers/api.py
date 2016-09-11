@@ -134,6 +134,14 @@ class Api:
         url_path = "user/{0}/common_connections".format(uid)
         return await self.request("get", url_path)
 
+    async def share(self, user: User) -> Dict[AnyStr, G]:
+        """Share a user with someone on your contact list.
+        :param user: User
+        :return: JSON Response.
+        """
+        url_path = "user/{0}/share".format(user._id)
+        return await self.request("post", url_path)
+
     async def superlike(self, user: User) -> Dict[AnyStr, G]:
         """Superlike a user.
         :param user: User

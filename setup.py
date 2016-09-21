@@ -5,7 +5,7 @@ from setuptools import (setup, find_packages)
 
 setup(
     name="aio-tinder",
-    version="0.1.3",
+    version="0.1.4",
     description="Tinder API library with asyncio",
     url="https://github.com/faruken/aio-tinder",
     author="faruken",
@@ -25,14 +25,15 @@ setup(
     keywords="tinder api asyncio",
     packages=find_packages(exclude=["tests", "examples"]),
     install_requires=[
-        "aiohttp==0.22.5",
+        "aiohttp==1.0.1",
+        "async-timeout==1.0.0",
         "cchardet==1.0.0",
         "chardet==2.3.0",
-        "multidict==1.2.2",
+        "multidict==2.0.1",
         "ujson==1.35"
     ],
     extras_require={
-        "test": ["coverage==4.2", "Logbook==1.0.0", "pytest==3.0.0",
-                 "pytest-asyncio==0.4.1", "pytest-cov==2.3.1"]
+        "test": ["coverage==4.2", "Logbook==1.0.0", "pytest==3.0.2",
+                 "pytest-asyncio==0.5.0", "pytest-cov==2.3.1"]
     }
 )

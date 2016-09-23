@@ -145,6 +145,18 @@ class Api:
         """
         url_path = "v2/profile/spotify/popular"
         return await self.request("get", url_path)
+
+    async def spotify_theme(self, song_id: str,
+                            delete: bool = False) -> Dict[AnyStr, T]:
+        """Add or delete spotify anthem from profile
+        :param song_id: Spotify Song ID to add
+        :param delete: If it's set `True`, then we delete the anthem.
+        :return: JSON Response.
+        """
+        url_path = "v2/profile/spotify/theme"
+        if delete:
+            return await self.request("delete", url_path)
+        return await self.request("put", url_path, data={"id": song_id})
     async def share(self, user: User) -> Dict[AnyStr, G]:
         """Share a user with someone on your contact list.
         :param user: User

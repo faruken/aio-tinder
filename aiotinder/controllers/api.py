@@ -26,7 +26,6 @@ class Api:
     """
 
     def __init__(self, facebook_id: AnyStr, facebook_token: AnyStr,
-                 tinder_token: AnyStr = None) -> None:
                  tinder_token: AnyStr = None,
                  loop: asyncio.events.AbstractEventLoop = None) -> None:
         """
@@ -38,7 +37,6 @@ class Api:
         self.id = facebook_id
         self.tinder_token = tinder_token
         self.headers = settings.HEADERS
-        self.session = aiohttp.ClientSession(headers=self.headers)
         self.loop = loop or asyncio.get_event_loop()
         self.session = aiohttp.ClientSession(headers=self.headers, loop=self.loop)
 
@@ -157,6 +155,7 @@ class Api:
         if delete:
             return await self.request("delete", url_path)
         return await self.request("put", url_path, data={"id": song_id})
+
     async def share(self, user: User) -> Dict[AnyStr, G]:
         """Share a user with someone on your contact list.
         :param user: User

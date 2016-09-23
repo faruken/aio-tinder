@@ -100,7 +100,7 @@ class Api:
         """User profile (This is your profile)
         :return: User's profile settings.
         """
-        return await self.request("get", "profile")
+        return await self.request("get", "profile?include=spotify")
 
     async def swipe_left(self, user: User) -> Dict[AnyStr, int]:
         """Swipe left (to be not interested with the person with the given `uid`).

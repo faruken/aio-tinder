@@ -139,6 +139,12 @@ class Api:
         url_path = "user/{0}/common_connections".format(uid)
         return await self.request("get", url_path)
 
+    async def spotify_popular(self) -> Dict[AnyStr, G]:
+        """Get popular songs from Spotify
+        :return: JSON Response.
+        """
+        url_path = "v2/profile/spotify/popular"
+        return await self.request("get", url_path)
     async def share(self, user: User) -> Dict[AnyStr, G]:
         """Share a user with someone on your contact list.
         :param user: User

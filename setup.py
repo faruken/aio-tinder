@@ -6,7 +6,7 @@ from setuptools import (setup, find_packages)
 setup(
     name="aio-tinder",
     version="0.1.7",
-    description="Tinder API library with asyncio",
+    description="Asynchronous Tinder API client",
     url="https://github.com/faruken/aio-tinder",
     author="faruken",
     author_email="",

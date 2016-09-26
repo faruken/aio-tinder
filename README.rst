@@ -12,14 +12,14 @@
 
 Introduction
 ************
-This is a simple Tinder API for Python 3.5 and above.
+Asynchronous Tinder API client written in Python that targets Python 3.5 and above.
 
 Tinder API request/responses are captured with `mitmproxy <https://mitmproxy.org/>`_.
 
 
 Note
 ====
-This library is Python 3.5 and above only. It relies on asyncio and type hinting which are features available only in Python 3.5 and above henceforth the library is not compatible with the previous Python versions.
+This library is Python 3.5 and above only. It relies on asyncio and type hinting henceforth the library is not compatible with the previous Python versions.
 
 
 Installation

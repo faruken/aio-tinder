@@ -25,6 +25,7 @@ setup(
     keywords="tinder api asyncio",
     packages=find_packages(exclude=["tests", "examples"]),
     install_requires=[
+        "aiodns==1.1.1",
         "aiohttp==1.0.1",
         "async-timeout==1.0.0",
         "cchardet==1.0.0",

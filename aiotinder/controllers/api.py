@@ -27,7 +27,8 @@ class Api:
 
     def __init__(self, facebook_id: AnyStr, facebook_token: AnyStr,
                  tinder_token: AnyStr = None,
-                 loop: asyncio.events.AbstractEventLoop = None) -> None:
+                 loop: asyncio.events.AbstractEventLoop = None,
+                 headers: Dict[str, str] = None) -> None:
         """
         :param facebook_id: Facebook ID
         :param facebook_token: Facebook Token
@@ -36,7 +37,7 @@ class Api:
         self.token = facebook_token
         self.id = facebook_id
         self.tinder_token = tinder_token
-        self.headers = settings.HEADERS
+        self.headers = headers or settings.HEADERS
         self.loop = loop or asyncio.get_event_loop()
         self.session = aiohttp.ClientSession(headers=self.headers, loop=self.loop)
 

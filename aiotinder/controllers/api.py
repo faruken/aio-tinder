@@ -145,6 +145,14 @@ class Api:
         url_path = "v2/profile/spotify/popular"
         return await self.request("get", url_path)
 
+    async def set_photo_optimizer(self, status: bool) -> Dict[AnyStr, T]:
+        """Enable or disable photo optimizer
+        :param status: True or False
+        :return: JSON Response.
+        """
+        return await self.request("post", "profile",
+                                  data={"photo_optimizer_enabled": status})
+
     async def spotify_theme(self, song_id: str,
                             delete: bool = False) -> Dict[AnyStr, T]:
         """Add or delete spotify anthem from profile
